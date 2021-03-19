@@ -19,8 +19,14 @@ build/**
 
 # User-specific configurations
 /.idea/
+.idea/
 *.iml
 *.ipr
 *.iws
 classes/**
 target/**
+iconapp/app/proguard-rules.pro
+*.jar
+*.bat
+*.properties
+iconapp/gradlew
