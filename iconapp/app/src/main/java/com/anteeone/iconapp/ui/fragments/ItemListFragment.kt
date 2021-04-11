@@ -15,18 +15,25 @@ import com.anteeone.iconapp.domain.usecases.GetIconListUsecaseImpl
 import com.anteeone.iconapp.ui.adapters.IconRecyclerViewAdapter
 import com.anteeone.iconapp.ui.viewmodel.IconListViewModel
 import com.anteeone.iconapp.ui.viewmodel.ViewModelFactory
+import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
+import javax.inject.Named
 
+@AndroidEntryPoint
 class ItemListFragment : Fragment() {
 
-    lateinit var mViewModel: IconListViewModel
     lateinit var mListAdapter: IconRecyclerViewAdapter
     lateinit var mRecyclerView: RecyclerView
 
-    var mViewModelFactory: ViewModelFactory = ViewModelFactory(GetIconListUsecaseImpl(ApiRepositoryImpl()))
+    @Inject
+    @Named("list")
+    lateinit var mViewModelFactory: ViewModelFactory
+    lateinit var mViewModel: IconListViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         mViewModel = ViewModelProvider(this,mViewModelFactory).get(IconListViewModel::class.java)
+
     }
 
     override fun onCreateView(

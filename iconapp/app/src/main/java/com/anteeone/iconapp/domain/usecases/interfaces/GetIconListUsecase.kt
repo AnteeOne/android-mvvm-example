@@ -2,7 +2,7 @@ package com.anteeone.iconapp.domain.usecases.interfaces
 
 import com.anteeone.iconapp.domain.entities.IconListEntity
 
-interface GetIconListUsecase {
+interface GetIconListUsecase: Usecase {
 
     suspend operator fun invoke(count: Int): IconListEntity
 

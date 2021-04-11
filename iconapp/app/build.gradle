@@ -3,6 +3,7 @@ plugins {
     id 'kotlin-android'
     id 'kotlin-kapt'
     id 'kotlin-android-extensions'
+    id 'dagger.hilt.android.plugin'
 }
 
 
@@ -74,7 +75,16 @@ dependencies {
     implementation 'com.squareup.picasso:picasso:2.71828'
 
     //region di
-    implementation "com.google.dagger:dagger:2.33"
+    implementation "com.google.dagger:dagger:2.34"
     kapt "com.google.dagger:dagger-compiler:2.33"
+
+    implementation 'com.google.dagger:hilt-android:2.34-beta'
+    annotationProcessor 'com.google.dagger:hilt-compiler:2.34-beta'
+    kapt 'com.google.dagger:hilt-compiler:2.34-beta'
+
     //endregion
+}
+
+kapt{
+    correctErrorTypes true
 }

@@ -30,3 +30,4 @@ iconapp/app/proguard-rules.pro
 *.bat
 *.properties
 iconapp/gradlew
+iconapp/app/src/main/AndroidManifest.xml

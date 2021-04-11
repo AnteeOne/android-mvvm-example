@@ -12,9 +12,11 @@ import com.anteeone.iconapp.domain.usecases.interfaces.Usecase
 import kotlinx.coroutines.launch
 
 class ItemDetailViewModel(
-    private val usecase: Usecase,
-    private val id: Int
+    private val usecase: Usecase
 ) : ViewModel() {
+
+
+    var itemId: Int? = null
 
     init {
         Log.d("anteetag", "IconDetailViewModel have initialised")
@@ -22,7 +24,7 @@ class ItemDetailViewModel(
 
     val mIconDetail : MutableLiveData<IconEntity> = MutableLiveData<IconEntity>().also {
         viewModelScope.launch {
-            it.value = (usecase as GetIconDetailUsecase).invoke(id)
+            it.value = itemId?.let { it1 -> (usecase as GetIconDetailUsecase).invoke(it1) }
         }
     }
 

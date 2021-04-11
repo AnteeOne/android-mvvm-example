@@ -9,20 +9,16 @@ class ViewModelFactory(
     private val usecase: Usecase):
 ViewModelProvider.Factory {
 
-    private var iconId: Int? = null
 
-    constructor(usecase: Usecase, id:Int): this(usecase){
-        iconId = id
-    }
 
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
-        when {
+        return when {
             modelClass.isAssignableFrom(IconListViewModel::class.java) -> {
-                return IconListViewModel(usecase) as? T
+                IconListViewModel(usecase) as? T
                     ?: throw IllegalArgumentException("Unknown viewmodel class")
             }
             modelClass.isAssignableFrom(ItemDetailViewModel::class.java) -> {
-                return ItemDetailViewModel(usecase,iconId?:1) as? T
+                ItemDetailViewModel(usecase) as? T
                     ?: throw IllegalArgumentException("Unknown viewmodel class")
             }
             else -> {

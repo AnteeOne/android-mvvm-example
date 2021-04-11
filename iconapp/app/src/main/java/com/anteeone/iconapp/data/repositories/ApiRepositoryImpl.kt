@@ -1,18 +1,19 @@
 package com.anteeone.iconapp.data.repositories
 
 import android.util.Log
-import com.anteeone.iconapp.data.models.network.IconDetailModel
-import com.anteeone.iconapp.data.models.network.IconListModel
-import com.anteeone.iconapp.data.network.ApiFactory
+import com.anteeone.iconapp.data.network.ApiConstants
+import com.anteeone.iconapp.data.network.IconApi
 import com.anteeone.iconapp.domain.entities.IconEntity
 import com.anteeone.iconapp.domain.entities.IconListEntity
 import com.anteeone.iconapp.domain.repositories.ApiRepository
+import dagger.hilt.android.AndroidEntryPoint
 import java.lang.Exception
 import java.lang.IllegalStateException
+import javax.inject.Inject
 
-class ApiRepositoryImpl: ApiRepository {
+class ApiRepositoryImpl(var api: IconApi): ApiRepository {
 
-    private val api = ApiFactory.iconApi
+
 
     override suspend fun getIconList(count: Int): IconListEntity {
         try{
